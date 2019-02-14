@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
     mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
 RUN git clone https://github.com/evilnapsis/bookmedik
 
 COPY Database.php /var/www/html/bookmedik/core/controller/Database.php

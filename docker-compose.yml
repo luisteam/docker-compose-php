@@ -22,6 +22,10 @@ services:
       - db
     volumes:
       - ./logs:/var/log/apache2
+    environment:
+      - MYSQL_DATABASE=bookmedik
+      - MYSQL_USER=bookmedik_user
+      - MYSQL_PASSWORD=bookmedik
     depends_on:
       - db
     container_name: phpapache2
