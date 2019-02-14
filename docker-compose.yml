@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - ./bbdd:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bookmedik
+      - MYSQL_USER=bookmedik_user
+      - MYSQL_PASSWORD=bookmedik
+    container_name: bookmedikBD
+
+  php:
+    build: ./php
+    ports:
+      - "80:80"
+    restart: always
+    links:
+      - db
+    volumes:
+      - ./logs:/var/log/apache2
+    depends_on:
+      - db
+    container_name: phpapache2
