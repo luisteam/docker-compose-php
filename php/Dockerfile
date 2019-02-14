@@ -4,7 +4,7 @@ EXPOSE 80
 
 RUN apt-get update && apt-get install -y \
     git \
-    php-mysql \
+    php7.0-mysql \
     mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
